@@ -1,4 +1,258 @@
-<<<<<<< HEAD
+# 🚀 TypeScript Microservices Architecture
+
+Enterprise-grade microservices template built with TypeScript, Node.js, Express, and modern tooling. Features clean architecture, event-driven communication, and full observability.
+
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+![Node](https://img.shields.io/badge/Node.js-20.x-green)
+![Express](https://img.shields.io/badge/Express-4.x-lightgrey)
+![Jest](https://img.shields.io/badge/Jest-29.x-red)
+
+## ✨ Core Features
+
+- 💪 100% TypeScript with strict mode
+- 🎯 Domain-Driven Design (DDD) principles
+- 🔄 Event-driven architecture using RabbitMQ
+- 🔍 OpenAPI/Swagger documentation
+- 📊 Structured logging with ******
+- 🧪 Comprehensive testing setup
+- 🔒 Built-in security features
+- 📈 Prometheus metrics & tracing
+
+## 🏗 Project Structure
+
+```
+├── services/
+│   ├── user-service/
+│   ├── product-service/
+│   ├── order-service/
+│   └── notification-service/
+├── libs/
+│   ├── common/
+│   ├── event-bus/
+│   └── testing/
+└── tools/
+    ├── generators/
+    └── scripts/
+```
+
+Each service follows clean architecture:
+```
+service/
+├── src/
+│   ├── domain/          # Business entities & logic
+│   ├── application/     # Use cases & ports
+│   ├── infrastructure/  # External implementations
+│   ├── interfaces/      # Controllers & DTOs
+│   └── main.ts         # Service entry point
+├── test/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+└── package.json
+```
+
+## 🛠 Tech Stack
+
+- **Runtime:** Node.js 20+
+- **Language:** TypeScript 5
+- **Framework:** Express with routing-controllers
+- **Database:** TypeORM with PostgreSQL
+- **Messaging:** RabbitMQ with TypeScript events
+- **Validation:** class-validator & class-transformer
+- **Testing:** Jest, Supertest
+- **Documentation:** TypeDoc, Swagger
+- **Monitoring:** Prometheus, OpenTelemetry
+- **DevOps:** Docker, Docker Compose
+
+## 🚀 Quick Start
+
+1. **Clone and Install**
+```bash
+git clone https://github.com/your-username/ts-microservices.git
+cd ts-microservices
+npm install
+```
+
+2. **Environment Setup**
+```bash
+cp .env.example .env
+# Configure your environment variables
+```
+
+3. **Start Development Environment**
+```bash
+# Start infrastructure
+docker-compose up -d
+
+# Start all services in development mode
+npm run dev
+```
+
+## 📦 Available Services
+
+### User Service (Port 3001)
+```typescript
+// Example user entity
+interface User {
+  id: string;
+  email: string;
+  profile: UserProfile;
+  roles: UserRole[];
+}
+```
+
+### Product Service (Port 3002)
+```typescript
+// Example product entity
+interface Product {
+  id: string;
+  name: string;
+  price: Money;
+  inventory: Inventory;
+}
+```
+
+### Order Service (Port 3003)
+```typescript
+// Example order entity
+interface Order {
+  id: string;
+  userId: string;
+  items: OrderItem[];
+  status: OrderStatus;
+}
+```
+
+## 🔧 Development
+
+### Service Generation
+```bash
+npm run generate:service -- --name=new-service
+```
+
+### Type Safety
+```bash
+# Run type checking
+npm run type-check
+
+# Generate types from OpenAPI
+npm run generate:types
+```
+
+### Testing
+```bash
+# Unit tests
+npm run test
+
+# Integration tests
+npm run test:integration
+
+# E2E tests
+npm run test:e2e
+
+# Test coverage
+npm run test:coverage
+```
+
+## 📊 Event Flow
+
+```mermaid
+graph LR
+    A[User Service] -->|UserCreated| B[Notification]
+    C[Order Service] -->|OrderPlaced| B
+    C -->|InventoryCheck| D[Product Service]
+```
+
+## 🔒 Security Features
+
+- JWT authentication
+- Request validation
+- Rate limiting
+- CORS configuration
+- Helmet security headers
+- SQL injection prevention
+
+## 📈 Monitoring
+
+### Metrics
+```typescript
+// Example metric collection
+@Metrics()
+class OrderService {
+  @Counter('orders_total')
+  async createOrder() {
+    // Implementation
+  }
+}
+```
+
+### Logging
+```typescript
+// Structured logging
+logger.info('Order created', {
+  orderId: order.id,
+  userId: order.userId,
+  amount: order.total
+});
+```
+
+## 🚢 Deployment
+
+### Docker
+```bash
+# Build all services
+docker-compose build
+
+# Run production mode
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Kubernetes
+```bash
+# Apply configurations
+kubectl apply -f k8s/
+
+# Verify deployment
+kubectl get pods
+```
+
+## 👥 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing`)
+3. Run tests (`npm run test`)
+4. Commit changes (`git commit -m 'Add feature'`)
+5. Push to branch (`git push origin feature/amazing`)
+6. Open a Pull Request
+
+### Coding Standards
+
+```json
+{
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/no-explicit-any": "error"
+  }
+}
+```
+
+## 📚 API Documentation
+
+- REST API docs: `http://localhost:3000/api-docs`
+- TypeDoc: `http://localhost:3000/docs`
+
+## 📄 License
+
+MIT © [Your Name]
+
+---
+
+Built with TypeScript 💙<<<<<<< HEAD
 Contribution: 2023-12-09 20:00
 
 Contribution: 2023-12-09 20:01
